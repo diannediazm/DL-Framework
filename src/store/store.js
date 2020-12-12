@@ -9,7 +9,7 @@ export default new Vuex.Store({
     RickandMorty: [],
   },
   getters: {
-    mostrarPersonajes(state) {
+    mostrarRickandMorty(state) {
       return state.RickandMorty;
     }
   },
@@ -27,9 +27,17 @@ export default new Vuex.Store({
             id: element.data().id,
             name: element.data().name,
             image: element.data().image,
-          })
+          }),
+          console.log("entradata");
         });
         commit('mutarPersonajes', arreglo);
+      })
+    },
+    eliminarRickandMorty(context, id) {
+      db.collection("RickandMorty").doc(id).delete().then(() => {
+        console.log('Personaje eliminado');
+      }).catch (error => {
+        console.log(error);
       })
     }
   },
