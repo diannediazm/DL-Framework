@@ -65,9 +65,10 @@ export default {
                 } else if (error.code == "auth/user-not-found") {
                     this.$notify.error({
                     title: 'Error',
-                    message: 'Correo inválido'
+                    message: 'Usuario no encontrado'
                 });
-                } 
+                this.$router.push('/registro')
+                }                   
               })
           }
           else {

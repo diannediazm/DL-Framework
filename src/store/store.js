@@ -33,11 +33,12 @@ export default new Vuex.Store({
         commit('mutarPersonajes', arreglo);
       });
     },
-    agregandoPacientes(context,data){
+    agregandoPersonajes(context,data){
       db.collection("RickandMorty").add({
         name: data.name,
         image: data.image
-      }).then(resp => {
+      })     
+      .then(resp => {
         console.log(resp);
       })
     },

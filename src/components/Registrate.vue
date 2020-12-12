@@ -61,15 +61,19 @@ export default {
     },
     methods: {
         registro(){
-            if (this.name && this.name.length > 2 && this.email && this.password && this.password > 6) {
+            if (this.form.name && this.form.name.length > 2 && this.form.email && this.form.password && this.form.password > 6) {
                 console.log("funciona");
-                firebase.auth().createUserWithEmailAndPassword(this.email, this.password)
+                firebase.auth().createUserWithEmailAndPassword(this.form.email, this.form.password)
                 .then(resp => { 
                     console.log(resp.user);
                     return resp.user.updateProfile({
-                        displayName: this.name
+                        displayName: this.form.name
                     }).then(() => {
-                        this.$router.push('/PerfilUsuario');
+                        this.$message({
+                        message:  `¡Bienvenid@ ${this.form.name}`,
+                        type: 'success'
+                        });
+                        this.$router.push('/user');
                     })
                 })
                 .catch(error => {

@@ -49,7 +49,8 @@ export default {
   methods: {
     agregar() {
       if (this.form.name && this.form.image){
-        this.$store.dispatch('agregandoPersonajes', this.form)
+        this.$store.dispatch('agregandoPersonajes', this.form),
+        this.$router.push('/user')
       } else {
         console.log('no carga');
       }

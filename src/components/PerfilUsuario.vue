@@ -1,6 +1,7 @@
 <template>
   <div>
     <b-container class="my-5 bv-example-row">
+      <h1 class="text-center my-5">Rick and Morty</h1>
       <b-button href="/agregando" variant="primary" class="mb-4">Agregar personaje</b-button>
       <b-card-group :data="dataUsers">
       
