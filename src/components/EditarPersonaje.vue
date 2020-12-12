@@ -1,7 +1,7 @@
 <template>
     <div class="container my-5">
-        <h1 class="text-center">Agrega un personaje</h1>
-        <b-form @submit.prevent="agregar">
+        <h1 class="text-center">Edita un personaje</h1>
+        <b-form @submit.prevent="editar">
            <b-form-group
                 id="input-group-1"
                 label="ID"
@@ -43,32 +43,26 @@
                 ></b-form-input>
             </b-form-group>
 
-        <b-button type="submit" variant="primary">Agregar</b-button>
+        <b-button type="submit" variant="primary">Editar</b-button>
         </b-form>
     </div>
 </template>
 
 <script>
 export default {
-    name: 'Agregar',
+    name: 'EditarPersonaje',
     data() {
-    return {
-      form: {
-        id: '',
-        name: '',
-        image: '',
-      },
+        return {
+            form: {
+                id: '',
+                name: '',
+                image: '',
+            },
+        }
+    },
+    created() {
+        let datos = this.$store.getters.mostrarPersonaje.find(resp => resp.id === this.$route.params.id)
+        console.log(datos);
     }
-  },
-  methods: {
-    agregar() {
-      if (this.form.id && this.form.name && this.form.image){
-        this.$store.dispatch('agregandoPersonajes', this.form),
-        this.$router.push('/user')
-      } else {
-        console.log('no carga');
-      }
-    }
-  },
 }
 </script>

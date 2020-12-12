@@ -35,6 +35,7 @@ export default new Vuex.Store({
     },
     agregandoPersonajes(context,data){
       db.collection("RickandMorty").add({
+        id: data.id,
         name: data.name,
         image: data.image
       })     

@@ -4,16 +4,14 @@
       <h1 class="text-center my-5">Rick and Morty</h1>
       <b-button href="/agregando" variant="primary" class="mb-4">Agregar personaje</b-button>
       <b-card-group :data="dataUsers">
-      
       <b-row>
         <b-col class="mb-3" cols="6" sm="8" md="4" lg="4" xl="4" v-for="(dataUsers,index) in dataUsers" :key="index">
             <b-card>
               <img :src="dataUsers.image" img-alt="Card image" img-top>
               <b-card-text>
-                {{dataUsers.id}}
                 {{dataUsers.name}}
               </b-card-text>
-              <b-button href="#" variant="primary" class="mr-3">Editar</b-button>
+              <b-button href="#" variant="primary" class="mr-3" @click="handleEdit(dataUsers.id)">Editar</b-button>
               <b-button href="#" variant="danger" @click="handleDelete(dataUsers.id)">Eliminar</b-button>
             </b-card>
         </b-col>
@@ -36,6 +34,9 @@ export default {
     handleDelete(id) {
       this.$store.dispatch('eliminarPersonaje', id);
     },
+    handleEdite(id) {
+      this.$router.push({name: "Editar", params: {id:id}});
+    }
   }
 }
 </script>
