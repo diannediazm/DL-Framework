@@ -31,9 +31,17 @@ export default new Vuex.Store({
           console.log("entradata");
         });
         commit('mutarPersonajes', arreglo);
+      });
+    },
+    agregandoPacientes(context,data){
+      db.collection("RickandMorty").add({
+        name: data.name,
+        image: data.image
+      }).then(resp => {
+        console.log(resp);
       })
     },
-    eliminarRickandMorty(context, id) {
+    eliminarPersonaje(context, id) {
       db.collection("RickandMorty").doc(id).delete().then(() => {
         console.log('Personaje eliminado');
       }).catch (error => {

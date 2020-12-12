@@ -1,6 +1,7 @@
 <template>
   <div>
     <b-container class="my-5 bv-example-row">
+      <b-button href="/agregando" variant="primary" class="mb-4">Agregar personaje</b-button>
       <b-card-group :data="dataUsers">
       
       <b-row>
@@ -32,8 +33,8 @@ export default {
   },
   methods: {
     handleDelete(id) {
-      this.$store.dispatch('eliminarRickandMorty', id);
-    }
+      this.$store.dispatch('eliminarPersonaje', id);
+    },
   }
 }
 </script>
