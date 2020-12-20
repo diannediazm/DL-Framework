@@ -5,14 +5,14 @@
       <b-button href="/agregando" variant="primary" class="mb-4">Agregar personaje</b-button>
       <b-card-group :data="dataUsers">
       <b-row>
-        <b-col class="mb-3" cols="6" sm="8" md="4" lg="4" xl="4" v-for="(dataUsers,index) in dataUsers" :key="index">
+        <b-col class="mb-3" cols="6" sm="8" md="4" lg="4" xl="4" v-for="(dataUser,index) in dataUsers" :key="index">
             <b-card>
-              <img :src="dataUsers.image" img-alt="Card image" img-top>
+              <img :src="dataUser.image" img-alt="Card image" img-top>
               <b-card-text>
-                {{dataUsers.name}}
+                {{dataUser.name}}
               </b-card-text>
-              <b-button href="#" variant="primary" class="mr-3" @click="handleEdit(dataUsers.id)">Editar</b-button>
-              <b-button href="#" variant="danger" @click="handleDelete(dataUsers.id)">Eliminar</b-button>
+              <b-button href="#" variant="primary" class="mr-3" @click="handleEdit(dataUser.idFB)">Editar</b-button>
+              <b-button href="#" variant="danger" @click="handleDelete(dataUser.idFB)">Eliminar</b-button>
             </b-card>
         </b-col>
       </b-row>
@@ -31,11 +31,11 @@ export default {
     }
   },
   methods: {
-    handleDelete(id) {
-      this.$store.dispatch('eliminarPersonaje', id);
+    handleDelete(idFB) {
+      this.$store.dispatch('eliminarPersonaje', idFB);
     },
-    handleEdite(id) {
-      this.$router.push({name: "Editar", params: {id:id}});
+    handleEdit(idFB) {
+      this.$router.push({name: "Editar", params: {idFB:idFB}});
     }
   }
 }
